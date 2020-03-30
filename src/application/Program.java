@@ -1,11 +1,14 @@
 package application;
 
+import chadrez.PartidaDeChadrez;
 import tabuleiro.Tabuleiro;
 
 public class Program {
 
 	public static void main(String[] args) {
-		Tabuleiro tab = new Tabuleiro(8, 8);
+		PartidaDeChadrez partida = new PartidaDeChadrez();
+		UI.printarTabuleiro(partida.getPecas());
+		
 	}
 
 }
