@@ -1,7 +1,11 @@
 package application;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 import chadrez.Cor;
 import chadrez.PecaDeChadrez;
+import chadrez.PosicaoChadrez;
 
 public class UI {
 
@@ -24,6 +28,17 @@ public class UI {
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 
+	public static PosicaoChadrez lerPosicaoChadrez(Scanner ler) {
+		try {
+			String s = ler.nextLine();
+			char coluna = s.charAt(0);
+			int linha = Integer.parseInt(s.substring(1));
+			return new PosicaoChadrez(coluna, linha);
+		}catch(RuntimeException e) {
+			throw new InputMismatchException("Erro instanciando PosicaoChadrez. Valores validos são de a1 à h8");
+		}
+	}
+	
 	public static void printarTabuleiro(PecaDeChadrez[][] pecas) {
 		for (int i = 0; i < pecas.length; i++) {
 			System.out.print((8 - i) + " ");

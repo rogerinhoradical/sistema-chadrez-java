@@ -2,6 +2,8 @@ package chadrez;
 
 import chadrez.pecas.Rei;
 import chadrez.pecas.Torre;
+import tabuleiro.Peca;
+import tabuleiro.Posicao;
 import tabuleiro.Tabuleiro;
 
 public class PartidaDeChadrez {
@@ -21,6 +23,27 @@ public class PartidaDeChadrez {
 			}
 		}
 		return mat;
+	}
+	
+	public PecaDeChadrez executarMovimentacaoPeca(PosicaoChadrez posicaoInicial, PosicaoChadrez posicaoDestino) {
+		Posicao inicial = posicaoInicial.toPosicao();
+		Posicao destino = posicaoDestino.toPosicao();
+		validarPosicaoInicial(inicial);
+		Peca pecaCapturada = fazerMovimento(inicial, destino);
+		return (PecaDeChadrez)pecaCapturada;
+	}
+	
+	private Peca fazerMovimento(Posicao inicial, Posicao destino){
+		Peca p = tabuleiro.removerPeca(inicial);
+		Peca pecaCapturada = tabuleiro.removerPeca(destino);
+		tabuleiro.colocarPeca(p, destino);
+		return pecaCapturada;
+	}
+	
+	private void validarPosicaoInicial(Posicao posicao) {
+		if(!tabuleiro.temUmaPeca(posicao)) {
+			throw new ChessException("A posicao não esta no tabuleiro");
+		}
 	}
 	
 	private void colocarNovaPeca(char coluna, int linha, PecaDeChadrez peca) {
