@@ -42,7 +42,10 @@ public class PartidaDeChadrez {
 	
 	private void validarPosicaoInicial(Posicao posicao) {
 		if(!tabuleiro.temUmaPeca(posicao)) {
-			throw new ChessException("A posicao não esta no tabuleiro");
+			throw new ChessException("Nao tem nenhuma peca na posicao inicial.");
+		}
+		if(!tabuleiro.peca(posicao).existeUmMovimentoPossivel()) {
+			throw new ChessException("Nao existe movimentos possiveis para a peca escolhida.");
 		}
 	}
 	
