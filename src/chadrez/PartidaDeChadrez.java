@@ -15,9 +15,9 @@ public class PartidaDeChadrez {
 	}
 	
 	public PecaDeChadrez[][] getPecas(){
-		PecaDeChadrez[][] mat = new PecaDeChadrez[tabuleiro.getLinha()][tabuleiro.getColuna()];
-		for(int i = 0; i < tabuleiro.getLinha(); i++) {
-			for(int j = 0; j < tabuleiro.getColuna(); j++) {
+		PecaDeChadrez[][] mat = new PecaDeChadrez[tabuleiro.getLinhas()][tabuleiro.getColunas()];
+		for(int i = 0; i < tabuleiro.getLinhas(); i++) {
+			for(int j = 0; j < tabuleiro.getColunas(); j++) {
 				mat[i][j] = (PecaDeChadrez) tabuleiro.peca(i, j);
 			}
 		}
